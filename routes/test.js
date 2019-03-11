@@ -52,4 +52,21 @@ router.put('/:id', function(req, res, next) {
   res.json(tests);
 });
 
+router.get('/top', function (req, res, next) => {
+    let scores = tests.map(test => test.score);
+    console.log(scores);
+    let highestScore = Math.max(...scores);
+    res.send(highestScore);
+})
+
+router.get('/:id/mean', function (req, res, next) => {
+    let student = tests.filter(test => {
+        test.studentId === req.params.id;
+    })
+
+    let scoresOfStudent = student.reduce(function(testObj, ) {
+        
+    }, [])
+})
+
 module.exports = router;
